@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+<pagetitle>Tema 5 e 6</pagetitle>
+</head>
+<body>
+<h1>Tema 5:IPV6</h1>
+<h2>Introdução</h2>
+<p>Para realizar a comunicação entre dois dispositvos na internet,é necessario que cada um possua em endereço unico e logico na camada de rede, para isso foi criado o protocolo ipv4 que é utilizado TCP/IP.<br>O IPV4 possui o comprimento de 32bits,sendo permitido 2x32(42949667296) de endereços em seu total.</p>
+<p>Conforme o crescimento da internet e o aumento exponencial no numero de dispositvos conectados a ela,foi identificado que surgiria em problema na falta de endereços IP a longo prazo.</p>
+<p>Devido ao endereçamento IPV4 possuir 32bits de comprimento e junto ao fato de que ada endereço é unico e nao pode ser utilizado por mais de um dispositvo,ou seja,uma conexão de um dispositivos com a internet é feita por meio de um unico endereço valido para comunicação.<br>foi enão identificado a necessidade da criaçao de uma nova versão do protocolo IP,sendo entao criado o IPV6.</p>
+<h2>Endereços IPV6</h2>
+<p>Os endereços IPV6 foram criados com 128 bits de comprimento e nele é utilizado a notação hexadecimal,pra facilitar a leituda dos endereços.<br>esses 128bits são distribuidos dentro de oito seções,cada uma possuindo entao 2 bytes de comprimento.<br>para representaçao desses dois bytes na notação hexadecimal são necessarios 4 digitos, ou seja, o endereçamento IPV6 é representado na forma de 32 digitos hexadecimais</p>
+<h2>Tipos de endereços IPV6</h2>
+<P>O protocolo Ipv6 possui 3 tipos de endereçamento são eles:</P>
+<div>
+   <ul>
+    <li>Unicast:Os endereços se caracterizam por identificar unicamente uma interface de rede. Por isso ,um pacote enviado a um endereço IPV6 Unicast vai ser entregue á uma unica interface em todo o escopo do Ipv6.São utilizados para permitir a comunicação entre dois nós exclusivos da rede como PCs,tablets,telefones IP,etc..</li>
+    <li>Multicast:esse endereço é um IP que designa um grupo de interfaces. Os pacotes enviados serão entregues a todos os endereços do grupo<br>Permite que uma copia dos dados seja enviada a rede para que varios destinatarios recebam os mesmos, ao inves de uma copia para cada um dos destinos. isto economiza, e miuito o trafego em uma rede.</li>
+    <li>Anycast:Um endereço anycast identifica um grupo de interfaces,porem so é entregue para interface mais proxima da origem,sendo mais especifica do que o Multicast<br>Nao possue um prefixo especifico,para identificar um endereço multicast,assim todo endereço ligado a mais de uma interface vira um anycast.</li>
+   </ul>
+</div>
+<h2>Cabeçalho do IPV6</h2>
+<p>O IPv6 introduz um novo formato de cabeçalho.se comparado ao anterior,todos os campos do novo cabeçalho possuem tamanho fixo,totalizando 64 bytes. O fato dele possuir um tamaho fixo acelera bastante o processamento dos pacotes pelos roteadores,visto que nao há necessidade de calcular a extensão de certos campos, e nem o tamanho do cabeçalho como um todo. Além disso, ocorreu uma redução dos números de campos utilizados, por meio da exclusão de campos de pouca utilidade pratica. Este fato também contribui para a diminuição do tempo gasto em processamento pelos roteadores.</p>
+<p>Dentre os campos que foram eliminados,dois  que merecem destaque são os de Checksum e o de fragmentaçao.</p>
+<p>A função do campo de cheksum era detectar erros que afetassem ao cabeçalho IP,sem detectar no entanto,erros no restante do pacote. É fato que atualmente a maioria dos erros não é de transmissão, visto que os mecanismo de detecção de erros Ethernet e PPP são bastante eficientes,mas sim nos roteadores. Como os roteadores só alteram o campos Hop limit(time-to-live IPV4),estes então terminam por recalcular o Cheksum antes de retransmitir o pacote,o que pode causar a não detecção de possiveis erros. Além disso, vários roteadores , visando aumento de performance, não verificavam mais este campo, terminandi assim por torna-lo totalmente supérfulo.</p>
+<p>Quanto ao campo de fragmentação, este foi ecluido , pois dicidiu-se que pacotes não serão mais fragmentados por roteadores. Caso um roteador receba um pacote com tamanho aior que o permitido ,descartá-lo-Á e enviará uma mensagem ao host que o enviou,comunicando o ocorrido. Este host devera então retransmitir o pacote na forma de pacotes menores. Desta forma há um ganho de performance no roteamento, pois é eliminada a necessidade de um roteador fragmentar varios pacotes.</p>
+<h2>ICMPV6</h2>
+<p>ICMPv6 é uma versão atualizada do protocolo ICMPv4 para ser utilizada em conjunto com  o 6. Sua implementação, portanto, é obrigatoria em todos os nós da rede que utilizam o 6 para se comunicar.</p>
+<p>Embora esta versão possua as mesmas funcionalidades que a sua antecessora, como reportar erros no processamento de pacotes, realizar diagnosticos e enviar mensagens sobre as caracteristicas da rede ,ambas não são compativeis e possuem diferenças significativas.</p>
+<p>O ICMPv6 assume funções de outros protocolos, que existem isoladamente no IPv4. Tal mudança foi projetada com o simples intuito de reduzir a multiplicidade de protocolos, o que é prejudicial por piorar a coerência e aumentar o tamanho das implementaçoes. Os protocolos usandos no IPV4, que não existem mais no IPv6,cujas funcionalidades foram  agregadas pelo IPV6,são:</p>
+
+
+
+
+
+</body>
+
+
+
+
+
