@@ -2,8 +2,103 @@
 <head>
 <pagetitle>Tema 5 e 6</pagetitle>
 </head>
+<style>
+body {
+   background-color: blue;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   font-size: medium;
+}
+
+.tema5 {
+   color: crimson;
+}
+
+.tema6 {
+   color: darkmagenta;
+}
+
+p {
+   color: gray;
+   font-size: large;
+}
+
+h2 {
+   color: blueviolet;
+}
+
+h3 {
+   color: darkgrey;
+}
+
+.div1 {
+  width:400px;
+  border: 10px solid green;
+  padding: 40px;
+  margin: 10px;
+  background-color:gold;
+}
+
+.item1 {
+   color: darkgray;
+}
+
+.item2{
+   color:blue;
+}
+
+.div2 {
+  width:400px;
+  border: 10px solid #FF8C00;
+  padding: 40px;
+  margin: 10px;
+  background-color:#A9A9A9;
+}
+
+.item3 {
+   color: #4B0082;
+}
+
+.item4 {
+   color: #B22222;
+}
+
+.item5 {
+   color: #1E90FF;
+}
+
+.div3 {
+  width:400px;
+  border: 10px solid red;
+  padding: 40px;
+  margin: 10px;
+  background-color:#008080;
+}
+
+.p1 {
+   color: #4682B4;
+}
+
+.p2 {
+   color: #663399;
+}
+
+.p3 {
+   color: #800000;
+}
+
+.p4 {
+   color: #4B0082;
+}
+
+.p5{
+  color:#E9967A;
+}
+
+
+</style>
 <body>
-<h1>Tema 5:IPV6</h1>
+<h1 class="tema5">Tema 5:IPV6</h1>
+<img src="/Users/USUÁRIO/Desktop/ipv6.jpg">
 <h2>Introdução</h2>
 <p>Para realizar a comunicação entre dois dispositvos na internet,é necessario que cada um possua em endereço unico e logico na camada de rede, para isso foi criado o protocolo ipv4 que é utilizado TCP/IP.<br>O IPV4 possui o comprimento de 32bits,sendo permitido 2x32(42949667296) de endereços em seu total.</p>
 <p>Conforme o crescimento da internet e o aumento exponencial no numero de dispositvos conectados a ela,foi identificado que surgiria em problema na falta de endereços IP a longo prazo.</p>
@@ -12,14 +107,15 @@
 <p>Os endereços IPV6 foram criados com 128 bits de comprimento e nele é utilizado a notação hexadecimal,pra facilitar a leituda dos endereços.<br>esses 128bits são distribuidos dentro de oito seções,cada uma possuindo entao 2 bytes de comprimento.<br>para representaçao desses dois bytes na notação hexadecimal são necessarios 4 digitos, ou seja, o endereçamento IPV6 é representado na forma de 32 digitos hexadecimais</p>
 <h2>Tipos de endereços IPV6</h2>
 <P>O protocolo Ipv6 possui 3 tipos de endereçamento são eles:</P>
-<div>
+<div class="div1">
    <ul>
-    <li>Unicast:Os endereços se caracterizam por identificar unicamente uma interface de rede. Por isso ,um pacote enviado a um endereço IPV6 Unicast vai ser entregue á uma unica interface em todo o escopo do Ipv6.São utilizados para permitir a comunicação entre dois nós exclusivos da rede como PCs,tablets,telefones IP,etc..</li>
-    <li>Multicast:esse endereço é um IP que designa um grupo de interfaces. Os pacotes enviados serão entregues a todos os endereços do grupo<br>Permite que uma copia dos dados seja enviada a rede para que varios destinatarios recebam os mesmos, ao inves de uma copia para cada um dos destinos. isto economiza, e miuito o trafego em uma rede.</li>
+    <li class="item1">Unicast:Os endereços se caracterizam por identificar unicamente uma interface de rede. Por isso ,um pacote enviado a um endereço IPV6 Unicast vai ser entregue á uma unica interface em todo o escopo do Ipv6.São utilizados para permitir a comunicação entre dois nós exclusivos da rede como PCs,tablets,telefones IP,etc..</li>
+    <li class="item2">Multicast:esse endereço é um IP que designa um grupo de interfaces. Os pacotes enviados serão entregues a todos os endereços do grupo<br>Permite que uma copia dos dados seja enviada a rede para que varios destinatarios recebam os mesmos, ao inves de uma copia para cada um dos destinos. isto economiza, e miuito o trafego em uma rede.</li>
     <li>Anycast:Um endereço anycast identifica um grupo de interfaces,porem so é entregue para interface mais proxima da origem,sendo mais especifica do que o Multicast<br>Nao possue um prefixo especifico,para identificar um endereço multicast,assim todo endereço ligado a mais de uma interface vira um anycast.</li>
    </ul>
 </div>
 <h2>Cabeçalho do IPV6</h2>
+<img src="/Users/USUÁRIO/Desktop/cabecalho.png">
 <p>O IPv6 introduz um novo formato de cabeçalho.se comparado ao anterior,todos os campos do novo cabeçalho possuem tamanho fixo,totalizando 64 bytes. O fato dele possuir um tamaho fixo acelera bastante o processamento dos pacotes pelos roteadores,visto que nao há necessidade de calcular a extensão de certos campos, e nem o tamanho do cabeçalho como um todo. Além disso, ocorreu uma redução dos números de campos utilizados, por meio da exclusão de campos de pouca utilidade pratica. Este fato também contribui para a diminuição do tempo gasto em processamento pelos roteadores.</p>
 <p>Dentre os campos que foram eliminados,dois  que merecem destaque são os de Checksum e o de fragmentaçao.</p>
 <p>A função do campo de cheksum era detectar erros que afetassem ao cabeçalho IP,sem detectar no entanto,erros no restante do pacote. É fato que atualmente a maioria dos erros não é de transmissão, visto que os mecanismo de detecção de erros Ethernet e PPP são bastante eficientes,mas sim nos roteadores. Como os roteadores só alteram o campos Hop limit(time-to-live IPV4),estes então terminam por recalcular o Cheksum antes de retransmitir o pacote,o que pode causar a não detecção de possiveis erros. Além disso, vários roteadores , visando aumento de performance, não verificavam mais este campo, terminandi assim por torna-lo totalmente supérfulo.</p>
@@ -28,13 +124,52 @@
 <p>ICMPv6 é uma versão atualizada do protocolo ICMPv4 para ser utilizada em conjunto com  o 6. Sua implementação, portanto, é obrigatoria em todos os nós da rede que utilizam o 6 para se comunicar.</p>
 <p>Embora esta versão possua as mesmas funcionalidades que a sua antecessora, como reportar erros no processamento de pacotes, realizar diagnosticos e enviar mensagens sobre as caracteristicas da rede ,ambas não são compativeis e possuem diferenças significativas.</p>
 <p>O ICMPv6 assume funções de outros protocolos, que existem isoladamente no IPv4. Tal mudança foi projetada com o simples intuito de reduzir a multiplicidade de protocolos, o que é prejudicial por piorar a coerência e aumentar o tamanho das implementaçoes. Os protocolos usandos no IPV4, que não existem mais no IPv6,cujas funcionalidades foram  agregadas pelo IPV6,são:</p>
-
-
-
-
-
+<div class="div2">
+   <ul>
+      <li class="item3">ARP:tem objetivo de mapear os endereços fisicos atraves dos endreços logicos.</li>
+      <li class="item4">RARP:realiza o inverso do ARP</li>
+      <li class="item5">IGMP:que atua com o gerenciamento de mebros do grupo multiclas.</li>
+   </ul>
+</div>
+<p>È importante notar que o ARP e RARP no IPV4 são protocolos que podem ser descritos como operando entre as camadas 2 e 3 do modelo ISO/OSI. Em especial eles não dependem de pacotes IP o ICMPv6 é um protocolo de camada 3, mas é encapsulado em um pacote IP. isso implica que firewalls operando na camada da rede com o IPV6, podem bloquear funções extremamente basicas como a descoberta dos vizinhos e a autoconfiguração.</p>
+<p>Uma  outra diferença que se convém ressaltar e a utilização do ICMPv6 pelos subsequentes protocolos e funcionalidades.</p>
+<div class="div3">
+  <ul>
+    <li class="p1">MLD:opera com os grupos multicast</li>
+    <li class="p2">NDP:responsavel por identificar caracteristicas das vizinhanças</li>
+    <li class="p3">Path MTU Discovery:trabalho no processo da descoberta do menor MTU entre dois nós em comunicação</li>
+    <li class="p4">Mobility support:cuida do gerenciamento de endereços originais dos hosts dinamicos</li>
+    <li class="p5">autoconfiguração Stateless: permiti aquisiçao de endereços globais.</li>
+   </ul> 
+</div>
+<h1 class="tema6">Tema 6: Padrões Ethernet</h1>
+<img src="/Users/USUÁRIO/Desktop/ethernet.webp">
+<h2>Introdução</h2>
+<p>Redes Ethernet é denominada por redes que utilizam cabos par trançados, para redes que não utilizamos cabos denominado rede Wireless/Redes sem fio, porem na história da informática as redes Ethernet tiveram vários aperfeiçoamentos por volta dos anos de 1970. Existem três padrões importantes na rede Ethernet.</p>
+<h2>Caracteristicas gerais</h2>
+<h3>10Base-T - 10 Megabit (Velocidade de Transmissão)</h3>
+<p>Este padrão especifico utiliza cabos de par trançado, (Este "T" é de Twisted-pair), seu comprimento chega até 100 metros para possibilitar a transmissão de dados entre os hosts, pode se até utilizar um HUB para repetir o sinal, sendo assim permitindo alcançar distâncias maiores.</p>
+<h3>100Base-TX - 100 Megabit (Velocidade de Transmissão)</h3>
+<p>Por volta de 1995 o padrão Fast Ethernet foi aprimorado para se adequar os padrões de transmissão, existem três tópicos que compõem o Fast Ethernet, o mais utilizado hoje em dia é o 100BASE-TX, no qual é constituído 
+por um cabo de par trançado CAT5, empregado em mais de 80% das acomodações atuais.</p>
+<h3>1000Base-T - 1000 Megabit (Velocidade de Transmissão)</h3>
+<p>Também denominado como GoC (Gigabit Over Copper), são chamados assim por utilizarem cabos de par trançado, os cabos de padrão 1000BaseT, utiliza com mais frequência o recurso de transmissão, portanto são mais 
+críticos com interferência e cabos muito longo</p>
+<p><b>Obs:</b>Atualmente existem diversos padrões Ethernet que é de extrema importância conhecer, pois não existem padrões Ethernet somente para o cabo par trançado, mas também para fibra óptica entre outros.</p>
+<h2>REde Ethernet</h2>
+<p>O padrão Ethernet é constituído por três princípios, nos quais reunidos definem de que forma os dados irão ser transmitido através do meio físico, sendo que sua missão é reunir os dados entregue por protocolo de alto padrão como TCP/IP, e implantar dentro de quadros que denominamos frames e envia-los pela rede:</p>
+<h3>MAC (Controle de Acesso ao Meio)</h3>
+<p>Sua principal função é "montar" o quadro Ethernet que será enviado para a rede, no qual é responsável por inserir o endereço MAC de origem e Destino, o endereço MAC é o Endereço físico da Placa de Rede do seu host, este conceito está estipulado no protocolo IEEE 802.3 (Se os dados estiverem passando via meio físico) e o IEEE 802.11 (Se os dados estiverem passando por uma rede não cabeada, como por exemplo uma Rede Wireless).</p>
+<h3>Meio Físico ou Camada Física</h3>
+<p>Sua responsabilidade é transformar o quadro ethernet enviado pelo MAC em sinais elétricos (Se a rede utilizar meio físico) ou sinais eletromagnéticos (Se a rede não for cabeada)</p>
+<h3>LLC (Controle de Link Lógico ou Quadro Ethernet)</h3>
+<p>O computador que irá receber os quadros consegue reconhecer o protocolo no qual ele deve entregar as informações de um quadro que o mesmo acabou de receber, ou seja ele é incumbido por incluir informações da camada de internet para originar os dados</p>
+<h2>Endereçamento</h2>
+<p>O endereçamento de rede ou simplesmente endereço IP é um número binário (0 e 1) que especifica de maneira única um host conectado à uma rede TCP/IP.</p>
+<p>Os endereços IPs é formado por 32 bits, no qual é separado por 04 grupos de 08 bits, esses grupos nos denominamos de octeto. Com cada grupo de octetos eu consigo chegar até 256 combinações distintas, para que esta configuração entre em um consenso os números utilizados são de 0 a 255, no qual retrata cada octeto, por exemplo é mais fácil utilizar a combinação de números (0 a 255) 75.96.200.151 do que usar números binários (0 e 1) para especificar um endereço de rede (1001011.1100000.11001000.10010111).</p>
+<p>Pelo Endereço IP, temos a possibilidade de reconhecer a localidade e até mesmo o país que o host está conectado na internet.</p>
 </body>
-
+</html>
 
 
 
